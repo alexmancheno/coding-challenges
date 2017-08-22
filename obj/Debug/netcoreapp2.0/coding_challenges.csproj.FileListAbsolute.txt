@@ -1,0 +1,10 @@
+/Users/alexmancheno/Desktop/coding-challenges/bin/Debug/netcoreapp2.0/coding_challenges.deps.json
+/Users/alexmancheno/Desktop/coding-challenges/bin/Debug/netcoreapp2.0/coding_challenges.runtimeconfig.json
+/Users/alexmancheno/Desktop/coding-challenges/bin/Debug/netcoreapp2.0/coding_challenges.runtimeconfig.dev.json
+/Users/alexmancheno/Desktop/coding-challenges/bin/Debug/netcoreapp2.0/coding_challenges.dll
+/Users/alexmancheno/Desktop/coding-challenges/bin/Debug/netcoreapp2.0/coding_challenges.pdb
+/Users/alexmancheno/Desktop/coding-challenges/obj/Debug/netcoreapp2.0/coding_challenges.csproj.CoreCompileInputs.cache
+/Users/alexmancheno/Desktop/coding-challenges/obj/Debug/netcoreapp2.0/coding_challenges.AssemblyInfoInputs.cache
+/Users/alexmancheno/Desktop/coding-challenges/obj/Debug/netcoreapp2.0/coding_challenges.AssemblyInfo.cs
+/Users/alexmancheno/Desktop/coding-challenges/obj/Debug/netcoreapp2.0/coding_challenges.dll
+/Users/alexmancheno/Desktop/coding-challenges/obj/Debug/netcoreapp2.0/coding_challenges.pdb
