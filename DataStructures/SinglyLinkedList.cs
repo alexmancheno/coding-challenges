@@ -1,7 +1,7 @@
 using System;
 using System.Text;
 
-namespace coding_challenges
+namespace coding_challenges.DataStructures
 {
 
     public class SinglyLinkedList<E> 
@@ -13,12 +13,13 @@ namespace coding_challenges
         public SinglyLinkedList() {}
 
         public int Size() { return size; }
-        public bool isEmpty() { return size == 0; }
+        public bool IsEmpty() { return size == 0; }
 
-        public E first() { return Head.getData(); }
+        public E First() { return Head.GetData(); }
 
         //update methods
-        public void addFirst(E e) {
+        public void AddFirst(E e) 
+        {
             Head = new Node<E>(e, Head);
             if (size == 0)
                 Tail = Head;
@@ -26,18 +27,19 @@ namespace coding_challenges
             size++;
         }
 
-        public void addLast(E e) {
+        public void AddLast(E e) 
+        {
             Node<E> newLast = new Node<E>(e, null);
             if (size == 0)
                 Head = newLast;
             else
-                Tail.setNext(newLast);
+                Tail.SetNext(newLast);
 
             Tail = newLast;
             size++;
         }
 
-        public E removeFirst() 
+        public E RemoveFirst() 
         {
             if (size == 0)
             {
@@ -45,8 +47,8 @@ namespace coding_challenges
             } 
             else 
             {
-                E temp = Head.getData();
-                Head = Head.getNext();
+                E temp = Head.GetData();
+                Head = Head.GetNext();
                 size--;
 
                 if (size == 0) 
@@ -58,37 +60,38 @@ namespace coding_challenges
             }
         }
 
-        public void makeEmpty() 
+        public void MakeEmpty() 
         {
             Head = null;
             size = 0;
         }
-    //etc methods
+
+        //etc methods
         public override String ToString() 
         {
             StringBuilder results = new StringBuilder("");
             Node<E> iterator = Head;
 
             while (iterator != null) {
-                results.Append(iterator.getData());
+                results.Append(iterator.GetData());
                 results.Append(" ");
-                iterator = iterator.getNext();
+                iterator = iterator.GetNext();
             }
 
             return results.ToString();
         }
 
-        public int countList() {
+        public int CountList() 
+        {
             Node<E> iterator = Head;
             int count = 0;
 
             while (iterator != null) {
                 count++;
-                iterator = iterator.getNext();
+                iterator = iterator.GetNext();
             }
 
             return count;
         }                
     }
-
 }

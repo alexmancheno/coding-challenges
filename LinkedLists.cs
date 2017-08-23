@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using System.Collections;
 using System.Collections.Generic;
+using coding_challenges.DataStructures;
 
 namespace coding_challenges
 {
@@ -20,29 +21,29 @@ namespace coding_challenges
             Node<string> prev = null;
             while(i != null)
             {
-                if (set.Contains(i.getData()))
+                if (set.Contains(i.GetData()))
                 {
-                    prev.setNext(i.getNext());
+                    prev.SetNext(i.GetNext());
                 }
                 else 
                 {
-                    set.Add(i.getData());
+                    set.Add(i.GetData());
                     prev = i;
                 }
-                i = i.getNext();
+                i = i.GetNext();
             }
         }
 
         public static void removeDupsNoBuffer(SinglyLinkedList<string> list)
         {
-            for (Node<string> i = list.Head; i != null; i = i.getNext())
+            for (Node<string> i = list.Head; i != null; i = i.GetNext())
             {
                 Node<string> prev = i;
-                for (Node<string> j = i.getNext(); j != null; j = j.getNext())
+                for (Node<string> j = i.GetNext(); j != null; j = j.GetNext())
                 {
-                    if (j.getData().Equals(i.getData()))
+                    if (j.GetData().Equals(i.GetData()))
                     {
-                        prev.setNext(j.getNext());
+                        prev.SetNext(j.GetNext());
                     }
                     else
                     {
@@ -64,18 +65,18 @@ namespace coding_challenges
             for (int i = 0; i < k; i++)
             {
                 if(p1 == null) return null;
-                p1 = p1.getNext();
+                p1 = p1.GetNext();
             }
 
             if (p1 == null) return null;
 
-            while(p1.getNext() != null)
+            while(p1.GetNext() != null)
             {
-                p1 = p1.getNext();
-                p2 = p2.getNext();
+                p1 = p1.GetNext();
+                p2 = p2.GetNext();
             }
 
-            return p2.getData();
+            return p2.GetData();
         }
 
         /* P.94 (2.3) - Delete Middle Node:
@@ -94,20 +95,20 @@ namespace coding_challenges
             Node<string> prev = null;
             while (true)
             {
-                j = j.getNext();
-                if (j != null) j = j.getNext();
+                j = j.GetNext();
+                if (j != null) j = j.GetNext();
 
                 if (j != null)
                 {
                     prev = i;
-                    i = i.getNext();
+                    i = i.GetNext();
                 } 
                 else break;
             }
 
             if (i != list.Head)
             {
-                prev.setNext(i.getNext());
+                prev.SetNext(i.GetNext());
             }
         }
 
@@ -129,24 +130,24 @@ namespace coding_challenges
             Node<int> i = input.Head;
             while (i != null)
             {       
-                if (i.getData() < x)
+                if (i.GetData() < x)
                 {
                     if (prev != null) 
-                        prev.setNext(i.getNext());
+                        prev.SetNext(i.GetNext());
                     else if (i == input.Head) 
-                        input.Head = input.Head.getNext();
-                    result.addLast(i.getData());
+                        input.Head = input.Head.GetNext();
+                    result.AddLast(i.GetData());
                     if (prev == null) prev = i;
-                    i = prev.getNext();
+                    i = prev.GetNext();
                 }
                 else
                 {
                     prev = i;
-                    i = i.getNext();
+                    i = i.GetNext();
                 }
             }
 
-            result.Tail.setNext(input.Head);
+            result.Tail.SetNext(input.Head);
             return result;
         }
 
@@ -174,8 +175,8 @@ namespace coding_challenges
              int sum = 0;
              while (i != null)
              {
-                 sum += i.getData() * (int)Math.Pow(10, power);
-                 i = i.getNext();
+                 sum += i.GetData() * (int)Math.Pow(10, power);
+                 i = i.GetNext();
                  power++;
              }
 
@@ -184,14 +185,14 @@ namespace coding_challenges
 
             while (i != null)
             {
-                sum += i.getData() * (int)Math.Pow(10, power);
-                i = i.getNext();
+                sum += i.GetData() * (int)Math.Pow(10, power);
+                i = i.GetNext();
                 power++;
             }
 
             while (sum > 0)
             {
-                result.addLast(sum % 10);
+                result.AddLast(sum % 10);
                 sum /= 10;
             }
             return result;
@@ -208,8 +209,8 @@ namespace coding_challenges
              int power = aLength - 1;
              while (i != null)
              {
-                 sum += i.getData() * (int)Math.Pow(10, power);
-                 i = i.getNext();
+                 sum += i.GetData() * (int)Math.Pow(10, power);
+                 i = i.GetNext();
                  power--;
              }
 
@@ -218,14 +219,14 @@ namespace coding_challenges
 
             while (i != null)
             {
-                sum += i.getData() * (int)Math.Pow(10, power);
-                i = i.getNext();
+                sum += i.GetData() * (int)Math.Pow(10, power);
+                i = i.GetNext();
                 power--;
             }
 
             while (sum > 0)
             {
-                result.addFirst(sum % 10);
+                result.AddFirst(sum % 10);
                 sum /= 10;
             }
             return result;
@@ -240,34 +241,96 @@ namespace coding_challenges
             SinglyLinkedList<string> stack = new SinglyLinkedList<string>();
             Node<string> i = list.Head;
             Node<string> j = list.Head;
-            while(j != null && j.getNext() != null)
+            while(j != null && j.GetNext() != null)
             {
-                stack.addFirst(i.getData());
-                i = i.getNext();
-                j = j.getNext().getNext();
+                stack.AddFirst(i.GetData());
+                i = i.GetNext();
+                j = j.GetNext().GetNext();
             }
 
-            if (j != null) i.getNext();
+            if (j != null) i.GetNext();
 
             Node<string> k = stack.Head;
             while (i != null && k != null)
             {
-                if (!i.getData().Equals(k.getData())) return false;
-                i = i.getNext();
-                k = k.getNext();
+                if (!i.GetData().Equals(k.GetData())) return false;
+                i = i.GetNext();
+                k = k.GetNext();
             }
 
             return true;
+        }
+
+        /*  P.95 (2.7) - Intersection:
+            Given to (singly) linked lists, determine if the two lists intersect. Return the
+            interecting node. Note that the intersection is defined based on the reference, not
+            value. That is, if the kth node of the first linked list is the exact same node (by
+            reference) as the jth node of the second linked list, then they are intersecting.        
+        */
+
+        public static Node<string> intersection(SinglyLinkedList<string> a, SinglyLinkedList<string> b)
+        {
+            if (a.Tail != b.Tail) return null;
+            Node<string> shorter = a.Size() < b.Size() ? a.Head : b.Head;
+            Node<string> longer = a.Size() > b.Size() ? a.Head : b.Head;
+            int difference = Math.Abs(a.Size() - b.Size());
+            
+            while (difference != 0) longer = longer.GetNext();
+
+            while (shorter != longer)
+            {
+                shorter = shorter.GetNext();
+                longer = longer.GetNext();
+            }
+
+            return shorter;
         }  
+
+        /* P.95 (2.8) - Loop Detection:
+        Given a circular linked list, implement an algorithm that returns the node at the beginning of 
+        the loop.
+
+        DEFINITION
+        Circular linked list: A (corrupt) linekd list in which a node's next pointer points to an earlier
+        node, so as to make a loop in the linked list.
+        
+        EXAMPLE
+        Input: A -> B -> C -> D -> C (the same C as earlier)
+        Output: C
+         */
+        public static Node<string> loopDetection(SinglyLinkedList<string> list)
+        {
+            Node<string> i = list.Head;
+            Node<string> j = list.Head;
+
+            while (j != null && j.GetNext() != null)
+            {
+                i = j;
+                j = j.GetNext().GetNext();
+                if(i == j) break;
+            }
+
+            if (i == null || j == null) return null;
+            i = list.Head;
+
+            while (i != j)
+            {
+                i = i.GetNext();
+                j = j.GetNext();
+            }
+            
+            return i;
+        }
+
 
         // Etc. methods
         public static string returnString(SinglyLinkedList<string> list)
         {
             StringBuilder results = new StringBuilder("");
             
-            for (Node<string> i = list.Head;i != null; i = i.getNext())
+            for (Node<string> i = list.Head;i != null; i = i.GetNext())
             {   
-                results.Append(i.getData().ToString());
+                results.Append(i.GetData().ToString());
             }
 
             return results.ToString();

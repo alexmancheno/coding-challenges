@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using coding_challenges.DataStructures;
 namespace coding_challenges
 {
     class Program
@@ -72,17 +73,17 @@ namespace coding_challenges
             Console.WriteLine($"\nIs a string rotation: {ArraysAndStrings.stringRotation(a1, a2)}");
 
             SinglyLinkedList<string> sll = new SinglyLinkedList<string>();
-            sll.addLast("a");
-            sll.addLast("b");
-            sll.addLast("c");
-            sll.addLast("d");
-            sll.addLast("e");
-            sll.addLast("f");
+            sll.AddLast("a");
+            sll.AddLast("b");
+            sll.AddLast("c");
+            sll.AddLast("d");
+            sll.AddLast("e");
+            sll.AddLast("f");
 
             SinglyLinkedList<string> sllA = new SinglyLinkedList<string>();
-            sllA.addLast("a");
-            sllA.addLast("b");
-            sllA.addLast("c");
+            sllA.AddLast("a");
+            sllA.AddLast("b");
+            sllA.AddLast("c");
             // Console.WriteLine(LinkedLists.returnString(sll));
             // LinkedLists.removeDupsNoBuffer(sll);
             // LinkedLists.deleteMiddleNode(sllA);
@@ -91,18 +92,49 @@ namespace coding_challenges
             Console.WriteLine(LinkedLists.returnKthToLast(sllA, 3));
 
             SinglyLinkedList<int> sllB = new SinglyLinkedList<int>();
-            sllB.addLast(6);
-            sllB.addLast(1);
-            sllB.addLast(7);
+            sllB.AddLast(6);
+            sllB.AddLast(1);
+            sllB.AddLast(7);
             // sllB = LinkedLists.partition(sllB, 5);
             SinglyLinkedList<int> sllC = new SinglyLinkedList<int>();
-            sllC.addLast(2);
-            sllC.addLast(9);
-            sllC.addLast(5);
-            sllC.addLast(0);
+            sllC.AddLast(2);
+            sllC.AddLast(9);
+            sllC.AddLast(5);
+            sllC.AddLast(0);
             
             SinglyLinkedList<int> sllD = LinkedLists.forwardSumLists(sllB, sllC);
             Console.WriteLine(sllD);
+
+            StackWithMin<int> stackMin = new StackWithMin<int>();
+            stackMin.Push(10);
+            stackMin.Push(5);
+            stackMin.Push(7);
+            stackMin.Push(1);
+            stackMin.Push(3);
+            stackMin.Push(8);
+            stackMin.Push(4);
+
+            Console.WriteLine(stackMin.Pop());
+            Console.WriteLine(stackMin.Min());
+            Console.WriteLine(stackMin.Pop());
+            Console.WriteLine(stackMin.Min());
+            Console.WriteLine(stackMin.Pop());
+            Console.WriteLine(stackMin.Min());
+            Console.WriteLine(stackMin.Pop());
+            Console.WriteLine(stackMin.Pop());
+            Console.WriteLine(stackMin.Min()+"\n");
+
+            SetOfStacks<int> set = new SetOfStacks<int>(25);
+            for (int i = 0; i < 100; i++) set.Push(i);
+            for (int i = 0; i < 100; i++) Console.Write($"{set.Pop()} ");
+            Console.WriteLine('\n');
+
+            LinkedStack<int> q1 = new LinkedStack<int>();
+            Random rnd = new Random();
+            for (int i = 0; i < 100; i++) q1.Push(rnd.Next(1, 100));
+            StackAndQueueFunctions.sortStack(q1);
+            for (int i = 0; i < 100; i++) Console.Write($"{q1.Pop()} ");
+            Console.WriteLine();            
         }
 
         public static void printArray(int[,] b)
