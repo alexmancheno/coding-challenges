@@ -1,22 +1,21 @@
 using System;
 using System.Text;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace coding_challenges.DataStructures
 {
-    public class DirectedGraph<E> : Graph<E> where E : IComparable
+    public class UndirectedGraph<E> : Graph<E> where E : IComparable 
     {
         private int Vertices;
         private int Edges;
         
-        private Dictionary<E, List<E>> Adj;
+        private Dictionary<E, SinglyLinkedList<E>> Adj;
 
-        public DirectedGraph(int v = 100)
+        public UndirectedGraph(int v = 100)
         {
             Vertices = v;
             Edges = 0;
-            Adj = new Dictionary<E, List<E>>(Vertices);
+            Adj = new Dictionary<E, SinglyLinkedList<E>>(Vertices);
         }
 
         // Add vertex to graph
@@ -25,7 +24,7 @@ namespace coding_challenges.DataStructures
         {
             if (!Adj.ContainsKey(v))
             {
-                Adj[v] = new List<E>();
+                Adj[v] = new SinglyLinkedList<E>();
                 Vertices++;
             }
         }
@@ -37,7 +36,7 @@ namespace coding_challenges.DataStructures
             AddVertex(v);
             AddVertex(w);
 
-            if (!Adjacent(v).Contains(w)) Adjacent(v).Add(w);
+            // if (!Adjacent(v).Contains(w)) Adjacent(v).Add(w);
             Edges++;
         }
 
@@ -48,27 +47,28 @@ namespace coding_challenges.DataStructures
         {
             if (!Adj.ContainsKey(v) || !Adj.ContainsKey(w)) return;
 
-            Adjacent(v).Remove(w);
-            Adjacent(w).Remove(v);
+            if (v.Equals(w))
+            {
+                
+            }
+            // Adjacent(v).Remove(w);
+            // Adjacent(w).Remove(v);
         }
 
-        // Return adjacency list of v
+        // Return adjacency SinglyLinkedList of v
         // Runtime: O(1)
-        public List<E> Adjacent(E v)
+        public SinglyLinkedList<E> Adjacent(E v)
         {
             return Adj[v];
         }
 
-        // Return in-degree of v
-        // Runtime:
-
-        // Return out-degree of v
+        // Return degree of v
         // Runtime: O(1)
-        public int OutDegree(E v)
+        public int Degree(E v)
         {
             return Adjacent(v).Count;
         }
-        
+
         // Return the degree of the vertext with most neighbors
         // Runtime: O(n)
         public int MaxDegree()
@@ -102,6 +102,6 @@ namespace coding_challenges.DataStructures
             }
             
             return sb.ToString();
-        }        
+        }
     }
 }

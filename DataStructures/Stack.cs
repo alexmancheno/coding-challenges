@@ -2,8 +2,8 @@ using System;
 
 namespace coding_challenges.DataStructures
 {
-    public interface Stack <E> {
-
+    public interface Stack <E>
+    {
         int Size ();
 
         bool IsEmpty();

@@ -262,7 +262,7 @@ namespace coding_challenges
         }
 
         /*  P.95 (2.7) - Intersection:
-            Given to (singly) linked lists, determine if the two lists intersect. Return the
+            Given two (singly) linked lists, determine if the two lists intersect. Return the
             interecting node. Note that the intersection is defined based on the reference, not
             value. That is, if the kth node of the first linked list is the exact same node (by
             reference) as the jth node of the second linked list, then they are intersecting.        

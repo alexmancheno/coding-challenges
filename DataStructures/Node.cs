@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace coding_challenges.DataStructures
 {
-    public class Node<E>
+    public class Node<E> where E : IComparable
     {
         private E Data;
         private Node<E> Next;

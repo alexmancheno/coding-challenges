@@ -5,7 +5,7 @@ namespace coding_challenges
     /*  LeetCode 303 - Range Sum Query (Immutable)
         Given an integer array nums, find the sum of the elements between indices (i, j).
         Note: 
-            1) You may assume that the array does not change, 2) There are many calls
+            1) You may assume that the array does not change, 
             2) There are many calls to sumRange function.
      */
     class NumArray

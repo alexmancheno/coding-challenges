@@ -4,7 +4,7 @@ using System.Text;
 namespace coding_challenges.DataStructures
 {
 
-    public class SinglyLinkedList<E> 
+    public class SinglyLinkedList<E> where E : IComparable
     {
         public Node<E> Head = null;
         public Node<E> Tail = null;
@@ -58,6 +58,15 @@ namespace coding_challenges.DataStructures
 
                 return temp;
             }
+        }
+
+        public bool Contains(E e)
+        {
+            for (Node<E> i = Head; i != null; i = i.GetNext())
+            {
+                if (i.GetData().Equals(e)) return true;
+            }
+            return false;
         }
 
         public void MakeEmpty() 

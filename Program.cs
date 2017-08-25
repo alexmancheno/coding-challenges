@@ -134,7 +134,11 @@ namespace coding_challenges
             for (int i = 0; i < 100; i++) q1.Push(rnd.Next(1, 100));
             StackAndQueueFunctions.sortStack(q1);
             for (int i = 0; i < 100; i++) Console.Write($"{q1.Pop()} ");
-            Console.WriteLine();            
+            Console.WriteLine('\n');
+
+            Card card = new CreditCard();
+            card.Charge();
+            Console.WriteLine($"Balance: {card.Balance}");            
         }
 
         public static void printArray(int[,] b)

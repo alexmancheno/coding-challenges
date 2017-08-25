@@ -1,27 +1,33 @@
 
 namespace coding_challenges.DataStructures
 {
-    public class LinkedQueue<E> : Queue<E> {
+    public class LinkedQueue<E> : Queue<E> 
+    {
         private SinglyLinkedList<E> list = new SinglyLinkedList<E>();
         public LinkedQueue(){}
 
-        public int Size() {
+        public int Size() 
+        {
             return list.Size();
         }
 
-        public bool IsEmpty() {
+        public bool IsEmpty() 
+        {
             return list.IsEmpty();
         }
 
-        public void Enqueue(E element) {
+        public void Enqueue(E element) 
+        {
             list.AddLast(element);
         }
 
-        public E First() {
+        public E First() 
+        {
             return list.First();
         }
 
-        public E Dequeue() {
+        public E Dequeue() 
+        {
             return list.RemoveFirst();
         }
     }
