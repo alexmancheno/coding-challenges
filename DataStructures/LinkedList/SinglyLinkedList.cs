@@ -69,6 +69,32 @@ namespace coding_challenges.DataStructures
             return false;
         }
 
+        public void Remove(E e)
+        {
+            Node<E> prev = null;
+            for (Node<E> i = Head; i != null; i = i.GetNext())
+            {
+                if (i.GetData().Equals(e))
+                {
+                    if (prev != null)
+                    {
+                        i = i.GetNext();
+                        prev.SetNext(i);
+                    }
+                    else
+                    {
+                        i = i.GetNext();
+                        Head = i;
+                    }
+                }
+                else
+                {
+                    prev = i;
+                    i = i.GetNext();
+                }
+            }
+        }
+
         public void MakeEmpty() 
         {
             Head = null;

@@ -3,7 +3,7 @@ using System.Text;
 
 namespace coding_challenges.DataStructures
 {
-    public class CircularlyLinkedList<E>
+    public class CircularlyLinkedList<E> where E : IComparable
     {
         private Node<E> Tail = null;
         private int size = 0;

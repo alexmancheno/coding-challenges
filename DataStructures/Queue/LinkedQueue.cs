@@ -2,11 +2,10 @@ using System;
 
 namespace coding_challenges.DataStructures
 {
-    public class LinkedStack<E> : Stack<E> {
-
+    public class LinkedQueue<E> : Queue<E> where E : IComparable
+    {
         private SinglyLinkedList<E> list = new SinglyLinkedList<E>();
-
-        public LinkedStack() {}
+        public LinkedQueue(){}
 
         public int Size() 
         {
@@ -18,17 +17,17 @@ namespace coding_challenges.DataStructures
             return list.IsEmpty();
         }
 
-        public void Push(E element) 
+        public void Enqueue(E element) 
         {
-            list.AddFirst(element);
+            list.AddLast(element);
         }
 
-        public E Top() 
+        public E First() 
         {
             return list.First();
         }
 
-        public E Pop() 
+        public E Dequeue() 
         {
             return list.RemoveFirst();
         }

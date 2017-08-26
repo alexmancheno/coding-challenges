@@ -1,6 +1,6 @@
 using System;
 
-namespace coding_challenges
+namespace coding_challenges.DataStructures
 {
     public abstract class Card
     {

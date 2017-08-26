@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace coding_challenges.DataStructures
 {
-    public class UndirectedGraph<E> : Graph<E> where E : IComparable 
+    public class UndirectedGraph<E> : IGraph<E> where E : IComparable 
     {
         private int Vertices;
         private int Edges;
@@ -29,54 +29,74 @@ namespace coding_challenges.DataStructures
             }
         }
 
+        public void RemoveVertex(E v)
+        {
+
+        }
+
         // Add edge from v to w
-        // Runtime: O(n); not good enough
+        // Runtime: O(1)
         public void AddEdge(E v, E w)
         {
             AddVertex(v);
             AddVertex(w);
 
-            // if (!Adjacent(v).Contains(w)) Adjacent(v).Add(w);
             Edges++;
         }
 
         // Remove edge from v to w
-        // Runtime: O(4n) -> O(n); baddd
+        // Runtime: O(n)
         
         public void RemoveEdge(E v, E w)
         {
-            if (!Adj.ContainsKey(v) || !Adj.ContainsKey(w)) return;
-
-            if (v.Equals(w))
+            if (v.Equals(w)) 
+                Adj[v].Remove(v);   // Remove loop
+            else
             {
-                
+                Adj[v].Remove(w);   
+                Adj[w].Remove(v);
             }
-            // Adjacent(v).Remove(w);
-            // Adjacent(w).Remove(v);
         }
 
-        // Return adjacency SinglyLinkedList of v
+        // Return adjacency list of v
         // Runtime: O(1)
         public SinglyLinkedList<E> Adjacent(E v)
         {
             return Adj[v];
         }
 
+        // Return the reverse of the digraph; useful to find edges that point to a vertex,
+        // whereas Adjacent() gives just the vertices connected by edges that point from
+        // each vertex.
+        // Runtime: O(?)
+        public DirectedGraph<E> Reverse()
+        {
+            DirectedGraph<E> Reversed = new DirectedGraph<E>(Vertices);
+            foreach (E vertex in Adj.Keys)
+            {
+                for (Node<E> neighbor = Adj[vertex].Head; neighbor != null; neighbor = neighbor.GetNext())
+                {
+                    Reversed.AddEdge(neighbor.GetData(), vertex);
+                }
+            }
+            return Reversed;
+        }
+
         // Return degree of v
         // Runtime: O(1)
         public int Degree(E v)
         {
-            return Adjacent(v).Count;
+            return Adjacent(v).Size();
         }
 
-        // Return the degree of the vertext with most neighbors
+        // Return the degree of the vertex with most neighbors
         // Runtime: O(n)
         public int MaxDegree()
         {
-            int max = -1;
-            foreach (E key in Adj.Keys)
+            int max = 0;
+            foreach (E vertex in Adj.Keys)
             {
-                if (Adj[key].Count > max) max = Adj[key].Count; 
+                if (Adjacent(vertex).Size() > max) max = Adjacent(vertex).Size(); 
             }
             return max;
         }
@@ -94,9 +114,9 @@ namespace coding_challenges.DataStructures
             foreach (E vertex in Adj.Keys)
             {
                 sb.Append($"{vertex.ToString()}: ");
-                foreach (E neighbor in Adj[vertex])
+                for (Node<E> neighbor = Adj[vertex].Head; neighbor != null; neighbor = neighbor.GetNext())
                 {
-                    sb.Append(neighbor.ToString());
+                    sb.Append(neighbor.GetData().ToString());
                 }
                 sb.Append("\n");
             }

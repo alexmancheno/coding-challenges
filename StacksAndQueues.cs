@@ -218,15 +218,20 @@ namespace coding_challenges
         }
     }
 
-    public class Animal
+    public class Animal : IComparable
     {
         public string Type;
-        public int Order;
+        public int Order { get; }
 
         public Animal(string t, int o)
         {
             Type = t;
             Order = o;
+        }
+
+        int IComparable.CompareTo(Object obj)
+        {
+            return Order - ((Animal) obj).Order;
         }
     } 
 }

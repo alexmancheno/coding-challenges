@@ -138,7 +138,30 @@ namespace coding_challenges
 
             Card card = new CreditCard();
             card.Charge();
-            Console.WriteLine($"Balance: {card.Balance}");            
+            Console.WriteLine($"Balance: {card.Balance} \n");
+
+            DirectedGraph<string> digraph1 = new DirectedGraph<string>();
+            string a = "a";
+            string b = "b";
+            string c = "c";
+            string d = "d";
+            string e = "e";
+
+            digraph1.AddVertex(a);
+            digraph1.AddVertex(b);
+            digraph1.AddVertex(c);
+            digraph1.AddVertex(d);
+            digraph1.AddVertex(e);
+
+            digraph1.AddEdge(a, c);
+            digraph1.AddEdge(c, d);
+            digraph1.AddEdge(d, a);
+            digraph1.AddEdge(d, e);
+            digraph1.AddEdge(e, b);
+
+            Console.WriteLine("digraph1: \n" + digraph1);
+            Console.WriteLine($"Path between {e} -> {a}: {TreesAndGraphs.routeBetweenNodes(digraph1, e, a)}");
+                                                
         }
 
         public static void printArray(int[,] b)

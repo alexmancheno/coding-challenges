@@ -8,11 +8,10 @@ namespace coding_challenges.DataStructures
         private bool[] marked;
         private int count;
 
-        public DepthFirstSearch(DirectedGraph<E> G, E v)
-        {
-            marked = new bool[G.VerticesCount()];
-
-        }
+        // public DepthFirstSearch(DirectedGraph<E> G, E v)
+        // {
+        //     marked = new bool[G.VerticesCount()];
+        // }
 
         private void dfs(DirectedGraph<E> G, E v)
         {
